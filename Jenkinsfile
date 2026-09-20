@@ -9,26 +9,28 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/kavindugeethshan/CodeAlpha_Complete-_Jenkins_Project-Task-3.git'
-                    ]]
-                ])
+                deleteDir()
+
+                sh '''
+                    git clone --branch main \
+                    https://github.com/kavindugeethshan/CodeAlpha_Complete-_Jenkins_Project-Task-3.git .
+                '''
             }
         }
 
         stage('Build & Test') {
             steps {
-                sh './gradlew clean build'
+                sh '''
+                    chmod +x gradlew
+                    ./gradlew clean build
+                '''
             }
         }
 
         stage('Archive JAR') {
             steps {
-                archiveArtifacts artifacts: 'build/libs/*.jar',
-                              fingerprint: true
+                archiveArtifacts artifacts: 'build/libs/java-gradle-devops-app-1.0.0.jar',
+                                  fingerprint: true
             }
         }
 
