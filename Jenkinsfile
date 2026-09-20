@@ -41,7 +41,11 @@ pipeline {
 
                     nohup java -jar \
                     build/libs/java-gradle-devops-app-1.0.0.jar \
-                    > app.log 2>&1 &
+                    > app.log 2>&1 < /dev/null &
+
+                    sleep 10
+
+                    curl -f http://localhost:8085/api/hello
                 '''
             }
         }
