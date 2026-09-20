@@ -1,11 +1,21 @@
 pipeline {
     agent { label 'ubuntu' }
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
 
         stage('Checkout') {
             steps {
-                checkout scm
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/kavindugeethshan/CodeAlpha_Complete-_Jenkins_Project-Task-3.git'
+                    ]]
+                ])
             }
         }
 
