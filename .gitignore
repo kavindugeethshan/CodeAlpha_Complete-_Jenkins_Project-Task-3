@@ -1,0 +1,33 @@
+# Gradle
+.gradle/
+build/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files (keep gradle wrapper jar)
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE and editor files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# Operating System files
+.DS_Store
+Thumbs.db
