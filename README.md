@@ -22,6 +22,9 @@ The pipeline operates across a distributed Jenkins architecture:
 - Embedded Tomcat Web Server (Port 8085)
 - cURL (API Verification)
 
+> [!TIP]
+> **🎥 Live Video Demonstration Available:** A complete end-to-end screen recording capturing the Jenkins distributed orchestration, automated Gradle build & testing, and live deployment verification is available in the [Video Demonstration](#-video-demonstration--pipeline-walkthrough) section or directly at [`docs/screen records/Video Project 2.mp4`](<docs/screen records/Video Project 2.mp4>).
+
 ---
 
 ## Assignment Requirements and Objectives
@@ -420,6 +423,45 @@ Finished: SUCCESS
 | Integrate CI/CD pipelines | GitHub to Jenkins Controller to Ubuntu Agent pipeline executing build, test, archive, and deploy stages | `docs/images/java-gradle-cicd-run-successfull.png` |
 | Streamline build and deployment | Automated pipeline with workspace cleanup, background daemon execution, and cURL health check | `docs/images/api-deployment-test.png` |
 | Understand DevOps principles | Git, CI, testing, artifact management, node isolation, automated deployment, and verification | `docs/images/ubuntu-node-isolation-verify.png` |
+| **End-to-End Live Demonstration** | **Complete pipeline execution, agent SSH orchestration, build, test, and REST API deployment** | [`docs/screen records/Video Project 2.mp4`](<docs/screen records/Video Project 2.mp4>) |
+
+---
+
+## 🎥 Video Demonstration / Pipeline Walkthrough
+
+A comprehensive screen recording captures the complete execution of the CI/CD pipeline across the distributed Windows-to-Ubuntu architecture.
+
+### 🎬 Recorded CI/CD Execution Walkthrough
+
+<div align="center">
+
+[![Watch Full Screen Recording - Click to Play](docs/images/video-demo-preview.png)](<docs/screen records/Video Project 2.mp4>)
+
+<br/>
+
+**[▶️ Click here or on the preview image to watch the full screen recording (`Video Project 2.mp4`)](<docs/screen records/Video Project 2.mp4>)**
+
+</div>
+
+#### Video Demonstration Specifications
+
+| Parameter | Details |
+| :--- | :--- |
+| **File Name** | `Video Project 2.mp4` |
+| **Video Path** | [`docs/screen records/Video Project 2.mp4`](<docs/screen records/Video Project 2.mp4>) |
+| **Preview Card** | [`docs/images/video-demo-preview.png`](docs/images/video-demo-preview.png) |
+| **Format** | MP4 Video (H.264 / AAC) |
+| **Git LFS Tracked** | Yes (`.gitattributes`) |
+
+#### Key Workflow Stages Captured in Recording
+
+1. **Jenkins Controller Orchestration**: Windows host initializes pipeline job `Java-Gradle-CI-CD` and dispatches workload.
+2. **SSH Remoting to Ubuntu Agent**: Secure communication handshake with `ubuntu-agent-01` (`/home/prabavi/jenkins/workspace/Java-Gradle-CI-CD`).
+3. **Automated Gradle Build & JUnit Testing**: Execution of `./gradlew clean build`, running test cases, validating business logic, and compiling bytecode.
+4. **Standalone JAR Packaging**: Creation of the production-ready fat JAR archive `java-gradle-devops-app-1.0.0.jar`.
+5. **Artifact Fingerprinting & Archival**: Storing the generated artifact in Jenkins Controller storage.
+6. **Daemonized Deployment**: Killing any old process, launching the JAR in the background with `nohup`, and binding to port `8085`.
+7. **Automated Post-Deployment Verification**: Pipeline executes `curl -f http://localhost:8085/api/hello`, verifying HTTP 200 OK and valid JSON response before setting build status to **Finished: SUCCESS**.
 
 ---
 
@@ -510,6 +552,7 @@ The implementation of Task 3 achieved the following verified outcomes:
 - Deployed the application to the Ubuntu agent environment running on port 8085.
 - Verified runtime application health automatically using `curl` as part of the pipeline deployment gate.
 - Codified the complete deployment lifecycle in a version-controlled `Jenkinsfile`.
+- Provided verifiable proof of execution through comprehensive step-by-step screenshots and an end-to-end screen recording (`docs/screen records/Video Project 2.mp4`).
 
 ---
 
